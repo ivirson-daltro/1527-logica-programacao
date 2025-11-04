@@ -1,0 +1,28 @@
+Algoritmo IMC Sr. Joaquim
+
+- Pedir o nome do cliente
+- Guardar o nome
+
+- Pedir o peso do cliente
+- Guardar o peso do cliente
+
+- Pedir a altura do cliente
+- Guardar a altura do cliente
+
+- Pedir a idade do cliente
+- Guardar a idade do cliente
+
+- Pedir o contato do cliente
+- Guardar o contato do cliente
+
+- Guardar a data do dia, para fins de histórico
+
+- Calcular o IMC, com base no peso e altura
+
+- Apresentar para o cliente em que faixa de IMC ele se encontra
+    - Se o IMC está inferior a 18,5 - informar que está abaixo do peso
+    - Se o IMC está entre 18,5 e 24,9 - informar que está na faixa de peso ideal
+    - Se o IMC está entre 25 e 29,9 - informar que está com sobrepeso
+    - Se o IMC está entre 30 e 34,9 - informar que está com obesidade
+    - Se o IMC está entre 35 e 39,9 - informar que está com obesidade severa
+    - Se o IMC está acima de 40 - informar que está com obesidade mórbida
