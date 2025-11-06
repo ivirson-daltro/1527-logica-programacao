@@ -197,3 +197,86 @@ Esses tipos armazenam referências na memória, não valores diretamente.
 - `console.log()` → saída
 - `Number()`, `String()` → conversões (coerções)
 - Operadores aritméticos: `+`, `-`, `*`, `/`, `%`, `**`
+
+---
+
+## Quebra de Fluxo e Tomada de Decisão com JavaScript
+
+Todo programa executa instruções em sequência, linha a linha.
+Mas, às vezes, queremos que o código “pense” e escolha um caminho.
+
+---
+
+### Condicionais `if / else`
+
+```js
+if (condição) {
+  // executa se condição for verdadeira
+} else {
+  // executa se for falsa
+}
+```
+
+---
+
+### Condicional `switch`
+
+Usada quando há múltiplas opções possíveis para uma mesma variável.
+
+```js
+switch (key) {
+  case value:
+    break;
+
+  default:
+    break;
+}
+```
+
+---
+
+### Condicional Ternário (`?` `:`)
+
+Forma curta de um if/else simples.
+
+```js
+condição ? valorSeVerdadeiro : valorSeFalso;
+```
+
+---
+
+## Conceito de Truthy / Falsy
+
+Em JavaScript, qualquer valor pode ser avaliado como verdadeiro (**truthy**) ou falso (**falsy**).
+
+Valores **falsy**:
+`false`, `0`, `""`, `null`, `undefined`, `NaN`
+
+Tudo o resto é **truthy**.
+
+---
+
+## Operadores de Coalescência (`??` e `?.`)
+
+### `??` — Nullish Coalescing
+
+Retorna o primeiro valor não nulo nem indefinido.
+
+```js
+let nomeCliente = null;
+let nomePadrao = "Cliente desconhecido";
+console.log(nomeCliente ?? nomePadrao);
+```
+
+---
+
+### `?.` — Optional Chaining
+
+Evita erro quando acessamos propriedades que podem não existir.
+
+```js
+let cliente = { nome: "Ana" };
+console.log(cliente.endereco?.cidade); // undefined (sem erro)
+```
+
+---
