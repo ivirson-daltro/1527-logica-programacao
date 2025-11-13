@@ -280,3 +280,183 @@ console.log(cliente.endereco?.cidade); // undefined (sem erro)
 ```
 
 ---
+
+## Laços de Repetição (Loops)
+
+Nem sempre sabemos de antemão quantas vezes uma ação precisa ser executada.  
+Os **laços de repetição** permitem **executar um bloco de código várias vezes**, enquanto uma condição for verdadeira — ou percorrendo elementos de uma estrutura (como arrays e objetos).
+
+---
+
+### `for` — repetição com contador
+
+Usado quando sabemos **quantas vezes** o loop deve executar.
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log("Contagem:", i);
+}
+```
+
+**Explicação:**
+
+- `let i = 0` → inicialização
+- `i < 5` → condição de continuação
+- `i++` → incremento a cada volta
+
+Resultado: imprime de 0 a 4.
+
+---
+
+### `while` — repetição com condição
+
+Usado quando **não sabemos quantas vezes** o loop deve ocorrer, mas temos uma condição que controla a repetição.
+
+```js
+let contador = 0;
+
+while (contador < 5) {
+  console.log("Contagem:", contador);
+  contador++;
+}
+```
+
+O bloco será executado **enquanto a condição for verdadeira**.  
+⚠️ Cuidado: se esquecer de atualizar a variável, o loop será **infinito**!
+
+---
+
+### `do...while` — executa pelo menos uma vez
+
+A diferença é que a verificação da condição vem **depois** do bloco.  
+Assim, o código executa **pelo menos uma vez**, mesmo que a condição seja falsa.
+
+```js
+let numero = 1;
+
+do {
+  console.log("Número:", numero);
+  numero++;
+} while (numero <= 3);
+```
+
+Resultado: imprime `1`, `2`, `3`.
+
+---
+
+### `for...in` — percorrendo propriedades de um objeto
+
+Serve para **iterar sobre as chaves (nomes das propriedades)** de um objeto.
+
+```js
+const cliente = { nome: "Joaquim", idade: 54, ativo: true };
+
+for (let chave in cliente) {
+  console.log(chave + ":", cliente[chave]);
+}
+```
+
+Saída:
+
+```
+nome: Joaquim
+idade: 54
+ativo: true
+```
+
+---
+
+### `for...of` — percorrendo valores de coleções
+
+Usado para **percorrer os valores** de arrays, strings ou objetos iteráveis.
+
+```js
+const produtos = ["remédio", "vitamina", "curativo"];
+
+for (let item of produtos) {
+  console.log("Produto:", item);
+}
+```
+
+Saída:
+
+```
+Produto: remédio
+Produto: vitamina
+Produto: curativo
+```
+
+---
+
+### Diferença entre `for...in` e `for...of`
+
+| Estrutura  | Itera sobre      | Usado com                       | Exemplo                    |
+| ---------- | ---------------- | ------------------------------- | -------------------------- |
+| `for...in` | Índices / chaves | Objetos e arrays (para índices) | `for (let i in array)`     |
+| `for...of` | Valores          | Arrays, strings, coleções       | `for (let valor of array)` |
+
+---
+
+### Exemplo prático: somando preços
+
+```js
+const preços = [10.5, 8.0, 12.75];
+let total = 0;
+
+for (let preço of preços) {
+  total += preço;
+}
+
+console.log("Total da compra:", total.toFixed(2));
+```
+
+---
+
+### Controle de fluxo dentro de loops
+
+Você pode **interromper** ou **pular** uma iteração:
+
+- `break` → encerra o loop imediatamente
+- `continue` → pula para a próxima iteração
+
+```js
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) continue; // pula o número 3
+  if (i === 5) break; // para no 5
+  console.log(i);
+}
+```
+
+Saída: `1, 2, 4`
+
+---
+
+### Exercício: Calculando a média de notas
+
+A **Farmácia Boa Saúde** agora oferece um serviço de “Saúde Escolar” — o Sr. Joaquim quer ajudar os pais a calcularem a **média das notas** de seus filhos.
+
+---
+
+**Desafio:**  
+Crie um programa que:
+
+1. Peça ao usuário para informar **quantas notas** serão digitadas.
+2. Use um **laço** para ler cada nota (usando `prompt()` ou entrada simulada).
+3. Calcule e exiba a média final.
+
+---
+
+**Exemplo (em JavaScript):**
+
+```js
+let totalNotas = Number(prompt("Quantas notas deseja informar?"));
+let soma = 0;
+
+for (let i = 1; i <= totalNotas; i++) {
+  let nota = Number(prompt("Digite a nota " + i + ":"));
+  soma += nota;
+}
+
+let media = soma / totalNotas;
+console.log("Média final:", media.toFixed(2));
+```
