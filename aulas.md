@@ -527,7 +527,7 @@ Esses métodos permitem manipular o tamanho do array, adicionando ou removendo e
   Remove o primeiro item (produto logo da frente).
 
 - **`unshift()`**
-  Adicionaum item no início (colocar algo logo na porta da prateleira).
+  Adiciona um item no início (colocar algo logo na porta da prateleira).
 
 ---
 
