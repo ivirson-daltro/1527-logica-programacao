@@ -460,3 +460,204 @@ for (let i = 1; i <= totalNotas; i++) {
 let media = soma / totalNotas;
 console.log("Média final:", media.toFixed(2));
 ```
+
+---
+
+## Funções e Assinaturas
+
+Funções são blocos de código que executam uma tarefa específica e podem ser reutilizadas ao longo do programa.  
+A **assinatura** de uma função representa seu nome, parâmetros e (quando aplicável) valores retornados.
+
+---
+
+### Exemplo de função simples
+
+```js
+function saudacao() {
+  console.log("Bem-vindo à Farmácia Boa Saúde!");
+}
+```
+
+---
+
+### Função com parâmetros e retorno
+
+```js
+function calcularDesconto(valor, percentual) {
+  return valor - valor * (percentual / 100);
+}
+
+console.log(calcularDesconto(100, 10)); // 90
+```
+
+---
+
+## Parametrização de Funções
+
+Parametrizar funções significa torná‑las **genéricas**, permitindo reutilizar o mesmo código em situações diferentes.
+
+```js
+function elevar(base, expoente) {
+  return base ** expoente;
+}
+
+console.log(elevar(2, 3)); // 8
+console.log(elevar(5, 2)); // 25
+```
+
+---
+
+## Métodos de Array
+
+Arrays em JavaScript têm funções nativas para manipular dados de forma simples e poderosa — o famoso “superpoder” dos arrays.
+
+---
+
+### Métodos de Adição e Remoção
+
+Esses métodos permitem manipular o tamanho do array, adicionando ou removendo elementos nas extremidades.
+
+- **`push()`**
+  Adiciona um item ao final do array (como colocar um produto novo na última prateleira).
+
+- **`pop()`**
+  Remove o último item (tirar o produto mais distante).
+
+- **`shift()`**
+  Remove o primeiro item (produto logo da frente).
+
+- **`unshift()`**
+  Adicionaum item no início (colocar algo logo na porta da prateleira).
+
+---
+
+### Métodos de Busca
+
+Esses métodos procuram informações dentro do array.
+
+- **`includes()`**
+  Verifica se o item existe (true/false).
+
+- **`indexOf()`**
+  Encontra a posição de um valor.
+
+- **`find()`**
+  Retorna o primeiro elemento que satisfaz uma condição (ex.: “o primeiro cliente maior de 60 anos")
+
+- **`findIndex()`**
+  Retorna o índice do item que atende a condição.
+
+---
+
+### Métodos de Transformação
+
+- **`map()`**
+  Cria um novo array transformando cada item com base em uma regra.
+  É como pegar uma lista de preços e aplicar 10% de desconto em todos automaticamente.
+
+  É muito usado para:
+
+  - formatar dados recebidos da API
+  - converter tipos (strings para números)
+  - gerar listas derivadas (ex.: nomes de usuários, preços com taxa, etc.)
+
+---
+
+### Métodos de Filtragem
+
+- **`filter()`**
+  Cria um novo array menor, contendo apenas os itens que atendem a uma condição.
+  É como separar somente as vitaminas dentro de um estoque que tem vários tipos de produtos.
+
+  Usado para:
+
+  - filtrar produtos por categoria
+  - buscar usuários ativos/inativos
+  - criar listas personalizadas com base em permissões, status ou valores mínimos/máximos
+
+---
+
+### Métodos de Redução
+
+- **`reduce()`**
+  Transforma um array inteiro em um único valor — que pode ser um número, string, objeto ou até outro array.
+
+  Muito usado para:
+
+  - somar valores (ex.: total de vendas)
+  - contar itens
+  - agrupar informações
+  - construir objetos a partir de listas
+  - calcular médias
+
+---
+
+### Métodos de Ordenação
+
+- **`sort()`**
+  Organiza alfabeticamente ou numericamente (com função de comparação).
+
+- **`reverse()`**
+  Inverte a ordem dos elementos.
+
+  Usos comuns:
+
+  - ordenar nomes de clientes
+  - classificar produtos pelo preço
+  - organizar listas em dashboards
+  - ordenar dados antes de exibir em tabelas
+
+---
+
+## Tratamento de Erros
+
+Programas podem falhar por diversos motivos: entradas inválidas, falhas de rede, valores inesperados…
+Para evitar que o programa quebre, utilizamos mecanismos de tratamento de erros.
+
+---
+
+### `try / catch / finally`
+
+- **try** → bloco onde o código pode gerar erro
+- **catch** → executa se um erro ocorrer
+- **finally** → sempre executa, com erro ou sem erro
+
+```js
+try {
+  let numero = Number(prompt("Digite um número:"));
+
+  if (isNaN(numero)) {
+    throw new Error("Valor digitado não é um número!");
+  }
+
+  console.log("Número válido:", numero);
+} catch (erro) {
+  console.error("Ocorreu um erro:", erro.message);
+} finally {
+  console.log("Encerrando execução...");
+}
+```
+
+---
+
+### Exemplo prático na Farmácia Boa Saúde
+
+O Sr. Joaquim deseja garantir que o cálculo de IMC **nunca quebre**, mesmo se o cliente digitar informações erradas.
+
+```js
+function calcularIMC(peso, altura) {
+  if (!peso || !altura || peso <= 0 || altura <= 0) {
+    throw new Error("Dados inválidos para cálculo de IMC.");
+  }
+  return peso / (altura * altura);
+}
+
+try {
+  let imc = calcularIMC(70, 0); // altura inválida
+  console.log("IMC:", imc.toFixed(2));
+} catch (e) {
+  console.error("Erro ao calcular IMC:", e.message);
+} finally {
+  console.log("Atendimento finalizado.");
+}
+```

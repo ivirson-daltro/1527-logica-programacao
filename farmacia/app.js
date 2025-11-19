@@ -1,4 +1,5 @@
 const prompt = require("prompt-sync")();
+const { cadastrarCliente, calcularIMC } = require("./service");
 
 let opcao;
 
@@ -6,7 +7,7 @@ do {
   console.log(`
         === FARMACIA FRONT ===
         1 - Cadastrar cliente
-        2 - Atualizar cliente
+        2 - Calcular IMC do cliente
         3 - Exibir evolução do cliente
         4 - ver clientes cadastrados
         5 - Excluir cliente
@@ -17,14 +18,11 @@ do {
 
   switch (opcao) {
     case "1":
-      console.log(
-        "Você escolheu Cadastrar cliente.\nDesculpe o transtorno. Estamos trabalhando para te entregar a melhor plataforma"
-      );
+      cadastrarCliente();
+      console.log("Cliente cadastrado com sucesso!");
       break;
     case "2":
-      console.log(
-        "Você escolheu Atualizar cliente.\nDesculpe o transtorno. Estamos trabalhando para te entregar a melhor plataforma"
-      );
+      calcularIMC();
       break;
     case "3":
       console.log(
@@ -39,6 +37,11 @@ do {
     case "5":
       console.log(
         "Você escolheu Excluir cliente.\nDesculpe o transtorno. Estamos trabalhando para te entregar a melhor plataforma"
+      );
+      break;
+    case "6":
+      console.log(
+        "Você escolheu Calcular o IMC do cliente.\nDesculpe o transtorno. Estamos trabalhando para te entregar a melhor plataforma"
       );
       break;
     case "0":
