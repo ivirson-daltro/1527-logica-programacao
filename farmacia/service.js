@@ -3,20 +3,26 @@ const prompt = require("prompt-sync")();
 const clientes = [];
 
 const cadastrarCliente = () => {
-  let peso;
-  let altura;
 
   const nomeCliente = prompt("Informe o nome do cliente: ");
 
-  do {
-    peso = Number(prompt("Agora, informe o peso do cliente: "));
-  } while (isNaN(peso));
+  if (!nomeCliente) {
+    throw new Error("O nome do cliente é obrigatório!");
+  }
 
-  do {
-    altura = Number(
-      prompt("Agora, informe a altura do cliente, em centímetros: ")
-    );
-  } while (isNaN(altura));
+  const pesoTexto = prompt("Agora, informe o peso do cliente: ");
+  const peso = Number(pesoTexto);
+
+  if (isNaN(peso) || peso <= 0) {
+    throw new Error("O peso deve ser um número maior que zero!");
+  }
+
+  const alturaTexto = prompt("Agora, informe a altura do cliente, em centímetros: ");
+  const altura = Number(alturaTexto);
+
+  if (isNaN(altura) || altura <= 0) {
+    throw new Error("A altura deve ser um número maior que zero!");
+  }
 
   clientes.push({ nome: nomeCliente, peso, altura: altura / 100 });
 };
@@ -41,6 +47,8 @@ const calcularIMC = () => {
 
   const calculo = cliente.peso / (cliente.altura * cliente.altura);
   cliente.imc = calculo.toFixed(1);
+
+  console.log(`O IMC de ${cliente.nome} é ${cliente.imc}`);
 };
 
 const buscarCliente = (nome) => {

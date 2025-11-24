@@ -18,11 +18,20 @@ do {
 
   switch (opcao) {
     case "1":
-      cadastrarCliente();
-      console.log("Cliente cadastrado com sucesso!");
+      try {
+        cadastrarCliente();
+        console.log("Cliente cadastrado com sucesso!");
+      } catch(erro) {
+        console.log("ALERTA: Não foi possível cadastrar!");
+        console.log("Motivo: " + erro.message);
+      }
       break;
     case "2":
-      calcularIMC();
+      try {   
+        calcularIMC();
+      } catch(erro) {
+        console.log("Erro ao calcular: " + erro.message);
+      }
       break;
     case "3":
       console.log(
@@ -53,4 +62,6 @@ do {
 
       break;
   }
-} while (opcao >= 1 && opcao <= 5);
+  prompt("\nPressione ENTER para continuar...");
+
+} while (opcao !== "0");
